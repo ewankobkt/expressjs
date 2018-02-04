@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  h1 #{title}
+
+  a(href='/add') Add name
+
+  ul
+    each name, i in names
+      li
+        form(method='POST', action='/update')
+          input(name='id', value=name.profile_id, type='hidden')
+          =name.profile_name
+          br
+          input.btn.btn-primary(type='submit', value='Update')
+        form(method='POST', action='/delete')
+          input(name='id', value=name.profile_id, type='hidden')
+          input.btn.btn-primary(type='submit', value='Delete')
